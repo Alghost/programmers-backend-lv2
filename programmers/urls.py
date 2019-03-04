@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
+from django.conf import settings
+from django.conf.urls.static import static
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -34,4 +36,4 @@ urlpatterns = [
     path('api/posts', include('post.urls')),
     path('api/comments', include('comment.urls')),
     path('api/likes', include('like.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
