@@ -12,7 +12,7 @@ class FbuserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
         write_only=True)
 
-    tstamp = serializers.DateTimeField(
+    registered_dttm = serializers.DateTimeField(
         read_only=True,
         format='%Y-%m-%d %H:%M:%S')
 

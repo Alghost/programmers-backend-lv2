@@ -21,8 +21,8 @@ class Comment(models.Model):
     writer = models.ForeignKey(Fbuser,
                                on_delete=models.CASCADE,
                                verbose_name='작성자')
-    tstamp = models.DateTimeField(auto_now_add=True,
-                                  verbose_name='등록시간')
+    registered_dttm = models.DateTimeField(auto_now_add=True,
+                                           verbose_name='등록시간')
 
     def __repr__(self):
         return 'Comment()'

@@ -35,7 +35,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
         return data
 
-    tstamp = serializers.DateTimeField(
+    registered_dttm = serializers.DateTimeField(
         read_only=True,
         format='%Y-%m-%d %H:%M:%S')
 

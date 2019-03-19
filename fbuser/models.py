@@ -11,8 +11,7 @@ class Fbuser(models.Model):
     """
 
     username = models.CharField(max_length=32,
-                                unique=True,
-                                verbose_name='아이디')
+                                verbose_name='이름')
     password = models.CharField(max_length=64,
                                 verbose_name='비밀번호')
     email = models.EmailField(max_length=256,
@@ -22,8 +21,8 @@ class Fbuser(models.Model):
                                     verbose_name='활성화 여부')
     is_staff = models.BooleanField(default=False,
                                    verbose_name='관리자 여부')
-    tstamp = models.DateTimeField(auto_now_add=True,
-                                  verbose_name='등록시간')
+    registered_dttm = models.DateTimeField(auto_now_add=True,
+                                           verbose_name='등록시간')
 
     def __repr__(self):
         return 'Fbuser()'
@@ -41,7 +40,7 @@ class FbuserAuth(object):
     def authenticate(self, request, username=None, password=None):
         if username and password:
             try:
-                user = Fbuser.objects.get(username=username)
+                user = Fbuser.objects.get(email=username)
                 if check_password(password, user.password) \
                         and self.user_can_authenticate(user):
                     return user
